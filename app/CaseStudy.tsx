@@ -1,4 +1,5 @@
 import type { ReactNode, CSSProperties } from "react";
+import SectionNav from "./SectionNav";
 import katex from "katex";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -326,6 +327,7 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
 
   return (
     <div style={rootStyle}>
+      <SectionNav />
       <nav style={{
         position: "fixed", top: 0, left: 0, right: 0, zIndex: 50, height: "56px",
         borderBottom: "1px solid var(--border-subtle)", background: "rgba(10,10,15,0.85)",
@@ -396,7 +398,7 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
 
       <main style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 24px" }}>
         {data.sections.map((s) => (
-          <section key={s.id} id={s.id} style={{ padding: "60px 0", borderBottom: "1px solid var(--border-subtle)" }}>
+          <section key={s.id} id={s.id} data-rail={s.label} style={{ padding: "60px 0", borderBottom: "1px solid var(--border-subtle)" }}>
             <div style={{ display: "flex", alignItems: "baseline", gap: "14px", marginBottom: "18px" }}>
               <span className="gradient-accent" style={{ fontSize: "0.85rem", fontWeight: 800, fontFamily: "ui-monospace, monospace" }}>{s.num}</span>
               <Label>{s.label}</Label>
