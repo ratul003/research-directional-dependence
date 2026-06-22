@@ -136,3 +136,7 @@ section[id] { scroll-margin-top: 80px; }
 
 .section-rail { display: none; }
 @media (min-width: 1280px) { .section-rail { display: flex; } }
+
+@media (max-width: 520px) {
+  .nav-name { display: none; }
+}

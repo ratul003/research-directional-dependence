@@ -335,9 +335,25 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
         backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)",
       }}>
         <div style={{ maxWidth: "1000px", margin: "0 auto", padding: "0 24px", height: "100%", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <a href="https://wahid-ratul.vercel.app" style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--foreground)", textDecoration: "none" }}>
-            Wahid Tawsif Ratul
-          </a>
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            <a className="nav-name" href="https://wahid-ratul.vercel.app" style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--foreground)", textDecoration: "none" }}>
+              Wahid Tawsif Ratul
+            </a>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}
+                  style={{ color: "var(--foreground-subtle)", display: "inline-flex" }}>
+                  {s.label === "Email" ? (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                      <rect x="3" y="5" width="18" height="14" rx="2" /><path d="M3 7l9 6 9-6" />
+                    </svg>
+                  ) : (
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d={s.path} /></svg>
+                  )}
+                </a>
+              ))}
+            </div>
+          </div>
           <a href="https://wahid-ratul.vercel.app/#research" style={{ fontSize: "0.82rem", color: "var(--foreground-muted)", textDecoration: "none" }}>
             ← All research
           </a>
