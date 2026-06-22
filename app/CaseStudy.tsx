@@ -360,7 +360,9 @@ export default function CaseStudy({ data }: { data: CaseStudyData }) {
         </div>
       </nav>
 
-      <header className="hero-section" style={{ padding: "130px 24px 70px" }}>
+      <header className="hero-section" style={{ padding: "130px 24px 70px", position: "relative", overflow: "hidden", isolation: "isolate" }}>
+        <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: -1, backgroundImage: "url(/hero.jpg)", backgroundSize: "cover", backgroundPosition: "center", opacity: 0.4 }} />
+        <div aria-hidden style={{ position: "absolute", inset: 0, zIndex: -1, background: "linear-gradient(90deg, #0a0a0f 0%, rgba(10,10,15,0.80) 46%, rgba(10,10,15,0.40) 100%), linear-gradient(180deg, rgba(10,10,15,0.30) 0%, rgba(10,10,15,0.92) 100%)" }} />
         <div style={{ maxWidth: "1000px", margin: "0 auto", position: "relative" }}>
           <Label>{data.category}</Label>
           <h1 className="gradient-heading rise-in" style={{ fontSize: "clamp(2.1rem, 5.5vw, 3.7rem)", fontWeight: 800, letterSpacing: "-0.04em", lineHeight: 1.07, marginBottom: "20px", maxWidth: "920px" }}>
