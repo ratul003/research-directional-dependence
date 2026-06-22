@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 // Optional curated labels by section id. The rail still auto-discovers every
-// <section id> in the DOM, in document order — these just refine the text.
+// <section id> in the DOM, in document order, these just refine the text.
 // Resolution order per section: data-rail attr > this map > heading text > prettified id.
 const LABELS: Record<string, string> = {};
 
