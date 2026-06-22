@@ -1,6 +1,8 @@
 import CaseStudy, { type CaseStudyData } from "./CaseStudy";
 import DirectionalDependenceLab from "./DirectionalDependenceLab";
 import DDSurface from "./DDSurface";
+import StatCounter from "./StatCounter";
+import MethodFlow from "./MethodFlow";
 
 const data: CaseStudyData = {
   accent: "#a855f7",
@@ -95,6 +97,22 @@ const data: CaseStudyData = {
             { tex: "X=\\alpha_1 U+\\alpha_2 V,\\qquad Y=\\beta_1 U+\\beta_2 V", note: "The mixing weights decide how much of the shared driver U each variable inherits, and therefore the asymmetry between them." },
           ],
         },
+        {
+          type: "node",
+          node: (
+            <MethodFlow
+              stages={[
+                { title: "Draw (U, V)", sub: "Independent pair, Normal or Uniform" },
+                { title: "Mix into (X, Y)", sub: "X = α₁U + α₂V, Y = β₁U + β₂V" },
+                { title: "Order + concomitants", sub: "Sort X, carry Y alongside as concomitants" },
+                { title: "Directional r", sub: "Order statistics vs concomitants, each side" },
+                { title: "Ordering criterion", sub: "Smaller |r| side is the response variable" },
+                { title: "Parameter search", sub: "Repeat across 100 parameter sets, map Δr" },
+              ]}
+              loop="Re-randomize the mixing weights and resample to trace the directional surface."
+            />
+          ),
+        },
       ],
     },
     {
@@ -119,6 +137,19 @@ const data: CaseStudyData = {
         "Running the dependence cycle on data simulated from each distribution gave the two key correlations below. Under the Normal the two sides are practically tied, so no direction can be claimed. Under the Uniform they separate sharply, the asymmetry that signals genuine directional dependence.",
       ],
       blocks: [
+        {
+          type: "node",
+          node: (
+            <StatCounter
+              stats={[
+                { value: 100, label: "Parameter sets searched for the strongest direction" },
+                { value: 0.73, decimals: 2, label: "Uniform Y-side correlation, vs 0.53 on X: the directional signal" },
+                { value: 2, label: "Driving distributions compared, Normal and Uniform" },
+                { value: 4, label: "Mixing weights that tune the dependence" },
+              ]}
+            />
+          ),
+        },
         {
           type: "table",
           head: ["Driving distribution", "Y-side r", "X-side r", "Read"],
